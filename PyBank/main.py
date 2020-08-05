@@ -30,7 +30,8 @@ with open(PyBankFile) as PyBankOpen:
         diff = int(x) - tracker
         tracker = x
         Diff_Arr.append(diff)  
-    Average_Change = sum(Diff_Arr[1:]) / (len(Diff_Arr)-1)    
+    Average_Change = sum(Diff_Arr[1:]) / (len(Diff_Arr)-1) 
+    Formatted_Average_Change = "{:.2f}".format(Average_Change)
 
     #Calculate Greatest Increase
     for x in Diff_Arr:
@@ -52,11 +53,11 @@ with open(PyBankFile) as PyBankOpen:
             print(Greatest_Decrease_Month)
 
 
-    print("Finanial Analysis"/n)
-    print("Finanial Analysis"/n)
-    #print(len(Month_Length))
-    #print(Total_Profit_Losses)
-    #print(Average_Change)
-    #print(Greatest_Increase)
-    #print(Greatest_Decrease)
+    print("Financial Analysis")
+    print("-------------------------")
+    print("Total Months: " + str(len(Month_Length)))
+    print("Total: " + str(Total_Profit_Losses))
+    print("Average Change: " + str(Formatted_Average_Change))
+    print("Greatest Increase in Profits: " + str(Greatest_Increase_Month) + " ($" + str(Greatest_Increase) + ")")
+    print("Greatest Decrease in Profits: " + str(Greatest_Decrease_Month) + " ($" + str(Greatest_Decrease) + ")")
     
