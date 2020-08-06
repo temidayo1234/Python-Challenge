@@ -10,7 +10,7 @@ Li = []
 OTooley = []
 
 #Define the path of file and store in a variable
-PyPollFile=os.path.join("Resources","election_data.csv")
+PyPollFile=os.path.join("..","Resources","election_data.csv")
 #Open file and store in a variable
 with open(PyPollFile) as PyPollOpen:
     #Define variable to read through file 
@@ -18,12 +18,16 @@ with open(PyPollFile) as PyPollOpen:
     
     next(PyPollReader)
     
+    #Read through the file
     for row in PyPollReader:
+
         #Caluclate total number of votes cast
         Votes_Tendered.append(row[0])
+
         #Store all apeareances of a candidate in a variable
         Candidates_Appearance.append(row[2])
-        #Calculate total number of votes for each candidate
+
+        #Calculate total number of votes for each candidate. The list was known after retrieving the uniq appearance of candidates who recevied a vote
         if row[2]== 'Khan':
             Khan.append(row[0])
         if row[2]== 'Correy':
@@ -32,11 +36,13 @@ with open(PyPollFile) as PyPollOpen:
             Li.append(row[0])
         if row[2]== 'O\'Tooley':
             OTooley.append(row[0])
-    #Retrieve the unique appearance of candidates who appear on ballot
+
+    #Retrieve the unique appearance of candidates who recevied a vote
     for candidate in Candidates_Appearance:
         if candidate in  Unique_Candidates_List:
             continue
         Unique_Candidates_List.append(candidate)
+
     #Calculate percentage of votes cast
     Khan_Percentage = (len(Khan)/len(Votes_Tendered)) *100
     Formatted_Khan_Percentage = "{:.0f}".format(Khan_Percentage)
@@ -70,11 +76,21 @@ with open(PyPollFile) as PyPollOpen:
     print("Winner: " + Winner)
     print("--------------------")
 
-    #print(len(Khan))
-   # print(len(Correy))
-   # print(len(Li))
-   # print(len(OTooley))
-   # print(Khan_Percentage)
-   # print(Correy_Percentage)
-   # print(Li_Percentage)
-   # print(OTooley_Percentage)
+export_path = os.path.join("Results.csv")
+
+with open(export_path, 'w') as result_file:
+
+    results_writer = csv.writer(result_file, delimiter=',')
+
+    results_writer.writerow(["Election Results"])
+    results_writer.writerow(["--------------------"])
+    results_writer.writerow(["Total Votes: "] + [str(len(Votes_Tendered))])
+    results_writer.writerow(["--------------------"])   
+    results_writer.writerow([Unique_Candidates_List[0] + ": " ]+ [Formatted_Khan_Percentage + "%" + " (" + str(len(Khan)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[1] + ": " ]+ [Formatted_Correy_Percentage + "%" + " (" + str(len(Correy)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[2] + ": " ]+ [Formatted_Li_Percentage + "%" + " (" + str(len(Li)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[3] + ": " ]+ [Formatted_OTooley_Percentage + "%" + " (" + str(len(OTooley)) + ")"]) 
+    results_writer.writerow(["--------------------"])
+    results_writer.writerow(["Winner: "]+ [Winner])
+    results_writer.writerow(["--------------------"])
+ 
