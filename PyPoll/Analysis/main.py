@@ -11,8 +11,10 @@ OTooley = []
 
 #Define the path of file and store in a variable
 PyPollFile=os.path.join("..","Resources","election_data.csv")
+
 #Open file and store in a variable
 with open(PyPollFile) as PyPollOpen:
+
     #Define variable to read through file 
     PyPollReader=csv.reader(PyPollOpen, delimiter=",")
     
@@ -76,21 +78,25 @@ with open(PyPollFile) as PyPollOpen:
     print("Winner: " + Winner)
     print("--------------------")
 
+#Define the path of file and store in a variable
 export_path = os.path.join("Results.csv")
 
+#Open file and store in a variable
 with open(export_path, 'w') as result_file:
 
+    #Define variable to write in file 
     results_writer = csv.writer(result_file, delimiter=',')
 
+    #Write results to file
     results_writer.writerow(["Election Results"])
     results_writer.writerow(["--------------------"])
-    results_writer.writerow(["Total Votes: "] + [str(len(Votes_Tendered))])
+    results_writer.writerow(["Total Votes: " + str(len(Votes_Tendered))])
     results_writer.writerow(["--------------------"])   
-    results_writer.writerow([Unique_Candidates_List[0] + ": " ]+ [Formatted_Khan_Percentage + "%" + " (" + str(len(Khan)) + ")"])
-    results_writer.writerow([Unique_Candidates_List[1] + ": " ]+ [Formatted_Correy_Percentage + "%" + " (" + str(len(Correy)) + ")"])
-    results_writer.writerow([Unique_Candidates_List[2] + ": " ]+ [Formatted_Li_Percentage + "%" + " (" + str(len(Li)) + ")"])
-    results_writer.writerow([Unique_Candidates_List[3] + ": " ]+ [Formatted_OTooley_Percentage + "%" + " (" + str(len(OTooley)) + ")"]) 
+    results_writer.writerow([Unique_Candidates_List[0] + ": " + Formatted_Khan_Percentage + "%" + " (" + str(len(Khan)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[1] + ": " + Formatted_Correy_Percentage + "%" + " (" + str(len(Correy)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[2] + ": " + Formatted_Li_Percentage + "%" + " (" + str(len(Li)) + ")"])
+    results_writer.writerow([Unique_Candidates_List[3] + ": " + Formatted_OTooley_Percentage + "%" + " (" + str(len(OTooley)) + ")"]) 
     results_writer.writerow(["--------------------"])
-    results_writer.writerow(["Winner: "]+ [Winner])
+    results_writer.writerow(["Winner: "+ Winner])
     results_writer.writerow(["--------------------"])
  

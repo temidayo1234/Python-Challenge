@@ -72,8 +72,8 @@ with open(export_path, 'w') as result_file:
     #Write results to file
     results_writer.writerow(["Financial Analysis"])
     results_writer.writerow(["---------------------"])
-    results_writer.writerow(["Total Months: "] + [str(len(Month_Length))])
-    results_writer.writerow(["Total: " ]+ [str(Total_Profit_Losses)])
-    results_writer.writerow(["Average Change: "] + [str(Formatted_Average_Change)])
-    results_writer.writerow(["Greatest Increase in Profits: " ]+ [str(Greatest_Increase_Month) + " ($" + str(Greatest_Increase) + ")"])
-    results_writer.writerow(["Greatest Decrease in Profits: " ]+ [str(Greatest_Decrease_Month) + " ($" + str(Greatest_Decrease) + ")"])
+    results_writer.writerow(["Total Months: " +str(len(Month_Length))])
+    results_writer.writerow(["Total: " + str(Total_Profit_Losses)])
+    results_writer.writerow(["Average Change: " + str(Formatted_Average_Change)])
+    results_writer.writerow(["Greatest Increase in Profits: " + str(Greatest_Increase_Month) + " ($" + str(Greatest_Increase) + ")"])
+    results_writer.writerow(["Greatest Decrease in Profits: " + str(Greatest_Decrease_Month) + " ($" + str(Greatest_Decrease) + ")"])
