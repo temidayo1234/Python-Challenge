@@ -9,7 +9,7 @@ tracker = 0
 Greatest_Increase = 0
 Greatest_Decrease = Greatest_Increase
 #Define the path of file and store in a variable
-PyBankFile=os.path.join(".","Resources","budget_data.csv")
+PyBankFile=os.path.join("Resources","budget_data.csv")
 #Open file and store in a variable
 with open(PyBankFile) as PyBankOpen:
     #Define variable to read through file 
